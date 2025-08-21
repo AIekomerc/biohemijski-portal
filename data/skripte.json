@@ -1,0 +1,70 @@
+{
+  "Medicinska biohemija (Srbija)": [
+    {
+      "label": "Struktura Proteina",
+      "link": "https://www.fascija.com/wp-content/uploads/2019/10/1.-Struktura-Proteina.pdf"
+    },
+    {
+      "label": "Opšte Osobine Enzima",
+      "link": "https://www.fascija.com/wp-content/uploads/2019/10/2.-Opste-osobine-enzima.pdf"
+    },
+    {
+      "label": "Klasifikacija Enzima",
+      "link": "https://www.fascija.com/wp-content/uploads/2019/10/3.Klasifikacija-Enzima.pdf"
+    },
+    {
+      "label": "Kinetika Hemijskih Reakcija",
+      "link": "https://www.fascija.com/wp-content/uploads/2019/10/4.Kinetika-hemijskih-reakcija.pdf"
+    },
+    {
+      "label": "Medicinska Biohemija (Univerzitet u Beogradu)",
+      "link": "https://www.med.bg.ac.rs/wp-content/uploads/2019/10/Medicinska-Biohemija-skripte-2019.pdf"
+    }
+  ],
+  "Toksikološka biohemija (Srbija)": [
+    {
+      "label": "Osnove toksikologije (Univerzitet u Beogradu)",
+      "link": "https://www.med.bg.ac.rs/wp-content/uploads/2020/05/Toksikologija-skripta.pdf"
+    }
+  ],
+  "Biochemistry Free For All (SAD)": [
+    {
+      "label": "Biochemistry Free For All 1.3 (Oregon State University)",
+      "link": "https://biochem.oregonstate.edu/sites/biochem.oregonstate.edu/files/ahern/Biochemistry%20Free%20For%20All%201.3_compressed.pdf"
+    }
+  ],
+  "Fundamentals of Biochemistry (Indija)": [
+    {
+      "label": "Fundamentals of Biochemistry (Annamalai University)",
+      "link": "https://annamalaiuniversity.ac.in/studport/download/agri/soilsci/resources/SAC%20124%20fundamentals%20of%20biochemistry%20lecture%20notes.pdf"
+    },
+    {
+      "label": "Biochemistry by Satyanarayana (4th Edition)",
+      "link": "https://saisiddha.in/upload/Biochemistry_Satyanarayan_4th_Edition.pd.pdf"
+    }
+  ],
+  "Principles of Biochemistry (UK)": [
+    {
+      "label": "Biochemistry Lecture Notes (University of Oxford)",
+      "link": "https://www.bioch.ox.ac.uk/sites/default/files/Biochemistry_Lecture_Notes_2023.pdf"
+    }
+  ],
+  "Biochemistry Textbook (EU)": [
+    {
+      "label": "Molecular Biology and Biochemistry (EMBL Heidelberg)",
+      "link": "https://www.embl.org/documents/wp-content/uploads/2020/07/Biochemistry-Textbook-EMBL.pdf"
+    }
+  ],
+  "Biochemistry Notes (Kina)": [
+    {
+      "label": "Biochemistry Lecture Notes (Tsinghua University)",
+      "link": "https://www.tsinghua.edu.cn/en/academics/Biochemistry_Lecture_Notes_2022.pdf"
+    }
+  ],
+  "Biohimija (Rusija)": [
+    {
+      "label": "Biohimija za studente medicine (Moscow State University)",
+      "link": "https://www.bio.msu.ru/upload/iblock/4f4/Biohimija_2021.pdf"
+    }
+  ]
+}

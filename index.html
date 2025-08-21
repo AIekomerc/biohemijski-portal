@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biohemijski Edukativni Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- NGL Viewer za proteine -->
+  <script src="https://unpkg.com/ngl"></script>
+  <!-- Kekule.js za hemijske formule -->
+  <script src="https://unpkg.com/kekule/dist/kekule.js?modules=chemWidget,algorithm"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-dna"></i> Biohemijski Edukativni Portal</h1>
+      <p class="subtitle">Kompletan resurs za studente biohemije na Univerzitetu u Beogradu - Sada sa globalnom bazom skripti</p>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="🔍 Pretražite pojmove, skripte, poglavlja...">
+        <button id="searchButton"><i class="fas fa-search"></i> Pretraga</button>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="home">Početna</div>
+      <div class="tab" data-tab="amino">Aminokiseline</div>
+      <div class="tab" data-tab="proteins">Proteini</div>
+      <div class="tab" data-tab="enzymes">Enzimi</div>
+      <div class="tab" data-tab="metabolism">Metabolizam</div>
+      <div class="tab" data-tab="nucleic">Nukleinske Kiseline</div>
+      <div class="tab" data-tab="scripts">Skripte</div>
+      <div class="tab" data-tab="databases">Baze podataka</div>
+    </div>
+
+    <div class="content">
+      <div class="sidebar">
+        <h3>Glavne Oblasti</h3>
+        <ul>
+          <li class="sidebar-link" data-tab="proteins">Struktura proteina</li>
+          <li class="sidebar-link" data-tab="enzymes">Enzimologija</li>
+          <li class="sidebar-link" data-tab="metabolism">Metabolički putevi</li>
+          <li class="sidebar-link" data-tab="nucleic">DNK i RNK</li>
+          <li class="sidebar-link" data-tab="scripts">Laboratorijske metode</li>
+        </ul>
+        <h3>Preporučene Skripte</h3>
+        <ul>
+          <li class="sidebar-link" data-tab="scripts">Medicinska biohemija</li>
+          <li class="sidebar-link" data-tab="scripts">Metabolizam lipida</li>
+          <li class="sidebar-link" data-tab="scripts">Bioenergetika</li>
+          <li class="sidebar-link" data-tab="scripts">Enzimska kinetika</li>
+        </ul>
+        <button class="action-button" id="downloadAll"><i class="fas fa-download"></i> Preuzmi sve skripte</button>
+      </div>
+
+      <div class="main-content">
+        <!-- Početna -->
+        <div id="home" class="tab-content active">
+          <div class="topic-header">
+            <i class="fas fa-flask"></i>
+            <div>
+              <h2 class="topic-title">Dobrodošli u Biohemijski Edukativni Portal</h2>
+              <p>Specijalizovan resurs za studente Hemijskog fakulteta u Beogradu</p>
+            </div>
+          </div>
+          <div style="text-align: center; margin: 30px 0;">
+            <img src="https://cdn.pixabay.com/photo/2017/09/25/13/14/dna-2784656_1280.jpg" alt="Ilustracija biohemijskih koncepata poput DNK strukture" style="max-width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          </div>
+          <h3>O programu</h3>
+          <p>Ovaj portal je specijalno dizajniran za studente biohemije na Hemijskom fakultetu u Beogradu. Sadrži:</p>
+          <ul style="margin: 15px 0 15px 30px;">
+            <li>Kompletan nastavni materijal prilagođen kurikulumu</li>
+            <li>Interaktivne vizuelizacije ključnih procesa</li>
+            <li>Pretragu po 500+ biohemijskih termina</li>
+            <li>Biblioteku skripti za preuzimanje</li>
+            <li>Metaboličke mape i proteinske strukture</li>
+          </ul>
+          <div style="display: flex; gap: 15px; margin: 30px 0; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 250px; background: #e3f2fd; padding: 20px; border-radius: 10px;">
+              <h3><i class="fas fa-book" style="color: var(--primary);"></i> Nastavni Plan</h3>
+              <p>Prilagođen kurikulumu Hemijskog fakulteta u Beogradu</p>
+            </div>
+            <div style="flex: 1; min-width: 250px; background: #e8f5e9; padding: 20px; border-radius: 10px;">
+              <h3><i class="fas fa-database" style="color: var(--secondary);"></i> Skripte</h3>
+              <p>Preuzimanje kompletnih materijala iz Medicinske biohemije</p>
+            </div>
+            <div style="flex: 1; min-width: 250px; background: #fff3e0; padding: 20px; border-radius: 10px;">
+              <h3><i class="fas fa-search" style="color: var(--accent);"></i> Napredna Pretraga</h3>
+              <p>Integrisan pretraživač za brzo pronalaženje sadržaja</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aminokiseline -->
+        <div id="amino" class="tab-content">
+          <div class="topic-header">
+            <i class="fas fa-atom"></i>
+            <div>
+              <h2 class="topic-title">Aminokiseline - Građevni blokovi proteina</h2>
+              <p>Struktura, klasifikacija i funkcije 20 standardnih aminokiselina</p>
+            </div>
+          </div>
+          <div class="visualization">
+            <div id="chemical-formula" class="chemical-formula"></div>
+          </div>
+          <h3>Klasifikacija aminokiselina</h3>
+          <div class="aa-grid">
+            <div class="amino-acid" data-smiles="C[C@H](N)C(=O)O">
+              <div class="aa-color" style="background: #ff6f00;">Ala</div>
+              <div class="aa-info">
+                <div class="aa-name">Alanin</div>
+                <div class="aa-formula">C3H7NO2</div>
+              </div>
+            </div>
+            <div class="amino-acid" data-smiles="N[C@@H](C(C)C)C(=O)O">
+              <div class="aa-color" style="background: #2c6fbb;">Val</div>
+              <div class="aa-info">
+                <div class="aa-name">Valin</div>
+                <div class="aa-formula">C5H11NO2</div>
+              </div>
+            </div>
+            <!-- Dodajte ostale aminokiseline po potrebi -->
+          </div>
+        </div>
+
+        <!-- Proteini -->
+        <div id="proteins" class="tab-content">
+          <div class="topic-header">
+            <i class="fas fa-project-diagram"></i>
+            <div>
+              <h2 class="topic-title">Proteini - Struktura i funkcija</h2>
+              <p>Organizacija proteinskih struktura</p>
+            </div>
+          </div>
+          <div class="visualization">
+            <div id="protein-viewer" class="protein-viewer"></div>
+          </div>
+          <h3>Strukturni nivoi proteina</h3>
+          <div style="margin: 20px 0; background: #f5f5f5; padding: 20px; border-radius: 10px;">
+            <p><strong>Primarna struktura:</strong> Sekvenca aminokiselina povezana peptidnim vezama</p>
+            <p><strong>Sekundarna struktura:</strong> Lokalno savijanje lanca (α-heliks, β-lamelae)</p>
+            <p><strong>Tercijarna struktura:</strong> Trodimenzionalno savijanje celog polipeptidnog lanca</p>
+            <p><strong>Kvartarna struktura:</strong> Organizacija više proteinskih podjedinica</p>
+          </div>
+        </div>
+
+        <!-- Enzimi -->
+        <div id="enzymes" class="tab-content">
+          <div class="topic-header">
+            <i class="fas fa-bolt"></i>
+            <div>
+              <h2 class="topic-title">Enzimi - Biološki katalizatori</h2>
+              <p>Mehanizmi dejstva, kinetika i regulacija enzima</p>
+            </div>
+          </div>
+          <div class="visualization">
+            <canvas id="enzymeCanvas" width="500" height="280"></canvas>
+          </div>
+          <h3>Ključni koncepti enzimologije</h3>
+          <ul style="margin: 20px 0 20px 20px;">
+            <li><strong>Aktivno mesto:</strong> Region enzima gde se vezuje supstrat</li>
+            <li><strong>Enzimska specifičnost:</strong> Apsolutna, grupa i stereo-specifičnost</li>
+          </ul>
+        </div>
+
+        <!-- Metabolizam -->
+        <div id="metabolism" class="tab-content">
+          <div class="topic-header">
+            <i class="fas fa-fire"></i>
+            <div>
+              <h2 class="topic-title">Metabolizam - Energetski putevi</h2>
+              <p>Integrisani metabolički putevi u ćelijama</p>
+            </div>
+          </div>
+          <div class="pathway">
+            <div class="pathway-info">
+              <div class="pathway-title">Krebsov ciklus</div>
+              <p>Centralni metabolički put koji oksiduje acetil grupe.</p>
+            </div>
+            <div class="pathway-steps">
+              <div class="pathway-step">
+                <div class="step-name">Acetil CoA</div>
+                <div class="step-enzyme">Citrat sintaza</div>
+              </div>
+              <div class="pathway-step">
+                <div class="step-name">Citrat</div>
+                <div class="step-enzyme">Akonitaza</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nukleinske Kiseline -->
+        <div id="nucleic" class="tab-content">
+          <div class="topic-header">
+            <i class="fas fa-dna"></i>
+            <div>
+              <h2 class="topic-title">Nukleinske Kiseline - DNK i RNK</h2>
+              <p>Struktura, funkcija i sinteza genetičkog materijala</p>
+            </div>
+          </div>
+          <div class="visualization">
+            <canvas id="dnaCanvas" width="500" height="280"></canvas>
+          </div>
+          <h3>Struktura DNK</h3>
+          <ul style="margin: 20px 0 20px 20px;">
+            <li>Dvostruka heliksna struktura</li>
+            <li>Komplementarni bazni parovi: A-T, G-C</li>
+          </ul>
+        </div>
+
+        <!-- Skripte -->
+        <div id="scripts" class="tab-content">
+          <div class="topic-header">
+            <i class="fas fa-book"></i>
+            <div>
+              <h2 class="topic-title">Skripte i Materijali</h2>
+              <p>Kompletan nastavni materijal za studente biohemije</p>
+            </div>
+          </div>
+          <div class="filters">
+            <button onclick="filterSubjects('all')">Svi predmeti</button>
+            <button onclick="filterSubjects('obavezni')">Obavezni</button>
+            <button onclick="filterSubjects('izborni')">Izborni</button>
+          </div>
+          <div id="subjectsList" class="script-list"></div>
+        </div>
+
+        <!-- Baze podataka -->
+        <div id="databases" class="tab-content">
+          <div class="topic-header">
+            <i class="fas fa-database"></i>
+            <div>
+              <h2 class="topic-title">Baze podataka</h2>
+              <p>Pristup ključnim biohemijskim resursima</p>
+            </div>
+          </div>
+          <div class="script-list">
+            <div class="database"><a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed</a> – Naučne publikacije</div>
+            <div class="database"><a href="https://www.uniprot.org" target="_blank">Uniprot</a> – Proteomske baze</div>
+            <div class="database"><a href="https://www.rcsb.org" target="_blank">PDB</a> – Strukture proteina</div>
+            <div class="database"><a href="https://www.expasy.org" target="_blank">ExPASy</a> – Biohemijski alati</div>
+            <div class="database"><a href="https://www.biorxiv.org" target="_blank">BioRxiv</a> – Preprint radovi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2025 Biohemijski Edukativni Portal | Sva prava zadržana</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
